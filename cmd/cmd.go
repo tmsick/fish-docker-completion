@@ -115,7 +115,7 @@ func (c *Command) Completion() string {
 		if k&c.Arguments == 0 {
 			continue
 		}
-		s += fmt.Sprintf("complete -c docker -n '__fish_docker_command_chain_exactly_matches %s' -a %q -d %q\n", c.ChainString(), v.Command, v.Type)
+		s += fmt.Sprintf("complete -c docker -n '__fish_docker_command_chain_satisfies %s' -a %q -d %q\n", c.ChainString(), v.Command, v.Type)
 	}
 	for _, sc := range c.Subcommands {
 		s += fmt.Sprintf("complete -c docker -n '__fish_docker_command_chain_exactly_matches %s' -a %s -d %q\n", c.ChainString(), sc.Chain[len(sc.Chain)-1], sc.Desc)
